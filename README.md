@@ -25,7 +25,7 @@ Mogaco
 - Spring REST DOC 작성
 
 ## 사용 기술 및 환경
-Spring boot, JPA, H2-Database React, Saga, Redux, Nginx, MySql
+Spring Boot, JPA, H2 Database, React, Redux, Redux-Saga, NGINX, MySQL
 <br />
 - Spring Boot는 이미 많은 회사에서 백엔드 기술로 사용되고 있습니다. 
   Spring 에 비해 간단한 설정으로 웹 개발을 진행할 수 있습니다.
