@@ -5,7 +5,6 @@ import com.mogaco.project.auth.application.LoginFailException;
 import com.mogaco.project.auth.application.LoginNotFoundException;
 import com.mogaco.project.meet.application.MeetingNotFoundException;
 import com.mogaco.project.member.application.MemberNotFoundException;
-import com.mogaco.project.member.application.StudyNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -50,11 +49,5 @@ public class ControllerErrorAdvice {
     @ExceptionHandler(MeetingNotFoundException.class)
     public ErrorResponse handleMeetingNotFound() {
         return new ErrorResponse("Member not found");
-    }
-
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(StudyNotFoundException.class)
-    public ErrorResponse handleStudyNotFound() {
-        return new ErrorResponse("Study not found");
     }
 }

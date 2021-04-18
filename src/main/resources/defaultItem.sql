@@ -1,19 +1,17 @@
 /* 시작시 샘플데이터 입력 */
-INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE, MEET_STATUS)
+INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE)
 VALUES (1, current_timestamp, current_timestamp, 5, '스타벅스', '홍대', '2021-04-01', '10:00 ~ 14:00', '홍대에서 만나서 같이 공부해요',
-        '모여서 같이 코딩해요', 'CLOSE');
-INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE, MEET_STATUS)
+        '모여서 같이 코딩해요');
+INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE)
 VALUES (2, current_timestamp, current_timestamp, 5, '커피빈스', '강남', '2021-04-03', '10:00 ~ 14:00', '주말에 열정적으로 코딩할 사람?',
-        '강남에서 모여요', 'OPEN');
-INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE, MEET_STATUS)
+        '강남에서 모여요');
+INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE)
 VALUES (3, current_timestamp, current_timestamp, 5, '스피드 스터디룸', '종로', '2021-04-15', '10:00 ~ 14:00', 'study halle?',
-        '같이 스터디해요', 'OPEN');
-INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE, MEET_STATUS)
-VALUES (4, current_timestamp, current_timestamp, 5, '맥도날드', '이대', '2021-04-20', '10:00 ~ 14:00', '저는 AI 공부할거에요', '모각코',
-        'OPEN');
-INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE, MEET_STATUS)
-VALUES (5, current_timestamp, current_timestamp, 5, '스타벅스', '성수', '2021-04-04', '10:00 ~ 14:00', '', '주말에 같이 공부할 사람?',
-        'OPEN');
+        '같이 스터디해요');
+INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE)
+VALUES (4, current_timestamp, current_timestamp, 5, '맥도날드', '이대', '2021-04-20', '10:00 ~ 14:00', '저는 AI 공부할거에요', '모각코');
+INSERT INTO MEET (ID, CREATED_AT, UPDATED_AT, COUNT, DETAIL, LOCATION, STARTED_AT, TIME, MESSAGE, TITLE)
+VALUES (5, current_timestamp, current_timestamp, 5, '스타벅스', '성수', '2021-04-04', '10:00 ~ 14:00', '', '주말에 같이 공부할 사람?');
 INSERT INTO MEMBER (ID, EMAIL, NAME, PASSWORD, DELETED)
 VALUES (1, 'test@test.com', 'test', '$2a$10$KI.UNeE8kwLfJWWOyLFM/.J.KQdI5/gqCAGZrEjAxbGHHUl/tY6Ge', false);
 INSERT INTO MEMBER (ID, EMAIL, NAME, PASSWORD, DELETED)

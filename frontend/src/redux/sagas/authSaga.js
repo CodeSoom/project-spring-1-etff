@@ -72,7 +72,6 @@ function* watchClearError() {
 
 const memberLoadingAPI = (token) => {
   const config = {
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },

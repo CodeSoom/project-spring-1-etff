@@ -1,6 +1,5 @@
 package com.mogaco.project.meet.infra;
 
-import com.mogaco.project.meet.domain.MeetStatus;
 import com.mogaco.project.meet.dto.MainResponseDto;
 import com.mogaco.project.meet.dto.QMainResponseDto;
 import com.querydsl.core.QueryResults;
@@ -31,7 +30,6 @@ public class MeetRepositoryImpl implements MeetRepositoryCustom {
                         meet.meetStatus
                 ))
                 .from(meet)
-                .where(meet.meetStatus.eq(MeetStatus.OPEN))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();

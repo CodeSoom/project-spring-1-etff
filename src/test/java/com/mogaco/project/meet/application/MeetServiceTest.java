@@ -2,18 +2,15 @@ package com.mogaco.project.meet.application;
 
 import com.mogaco.project.meet.domain.Location;
 import com.mogaco.project.meet.domain.Meet;
-import com.mogaco.project.meet.domain.MeetStatus;
 import com.mogaco.project.meet.domain.MeetTime;
 import com.mogaco.project.meet.domain.Message;
 import com.mogaco.project.meet.dto.MeetDetailResponseDto;
 import com.mogaco.project.meet.dto.MeetJoinDto;
 import com.mogaco.project.meet.dto.MeetRequestDto;
-import com.mogaco.project.meet.dto.MyMeetResponseDto;
 import com.mogaco.project.meet.infra.MeetRepository;
 import com.mogaco.project.member.domain.Member;
 import com.mogaco.project.member.domain.MemberRepository;
 import com.mogaco.project.study.domain.Study;
-import com.mogaco.project.study.domain.StudyRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -49,14 +46,10 @@ class MeetServiceTest {
     private MeetService meetService;
     private MeetRepository meetRepository = mock(MeetRepository.class);
     private MemberRepository memberRepository = mock(MemberRepository.class);
-    private StudyRepository studyRepository = mock(StudyRepository.class);
 
     final Location location = new Location(GIVEN_LOCATION, "STAR_BUCKS");
     final Message givenMessage = new Message(GIVEN_TITLE, GIVEN_MESSAGE);
     final MeetTime givenMeetTime = new MeetTime(GIVEN_START_DAY, GIVEN_START_TIME);
-    final Member member = Member.builder()
-            .id(GIVEN_MEMBER_ID).build();
-    final Study study = Study.createStudy("NODEJS", member);
     final List<Study> studies = new ArrayList<>();
 
     private Meet givenMeet = Meet.builder()
@@ -65,14 +58,13 @@ class MeetServiceTest {
             .meetTime(givenMeetTime)
             .location(location)
             .count(GIVEN_COUNT)
-            .meetStatus(MeetStatus.OPEN)
             .studies(studies)
             .build();
 
     @BeforeEach
     void setUp() {
         LocationConverter locationConverter = new LocationConverter();
-        meetService = new MeetService(meetRepository, locationConverter, memberRepository, studyRepository);
+        meetService = new MeetService(meetRepository, locationConverter, memberRepository);
     }
 
     @Nested
@@ -197,39 +189,6 @@ class MeetServiceTest {
             @Test
             void it_throws_meeting_not_found_exception() {
                 assertThrows(MeetingNotFoundException.class, () -> meetService.getMeeting(meetId));
-            }
-        }
-    }
-
-    @Nested
-    @DisplayName("getMyMeetings 메서드는")
-    class Describe_getMyMeetings {
-
-        @Nested
-        @DisplayName("등록된 회원 식별자가 주어지면")
-        class Context_with_member_id {
-            final Member member = Member.builder()
-                    .id(GIVEN_MEMBER_ID).build();
-            final Meet meet = givenMeet;
-            final Study study = Study.createStudy("NODEJS", member);
-
-            @BeforeEach
-            void setUp() {
-                given(studyRepository.findByMemberId((eq(GIVEN_MEMBER_ID))))
-                        .willReturn(List.of(study));
-                given(meetRepository.findById(anyLong()))
-                        .willReturn(Optional.of(meet));
-                meet.addStudy(study);
-            }
-
-            @DisplayName("내가 속한 모임 목록을 리턴한다.")
-            @Test
-            void it_returns_meet_response() {
-                List<MyMeetResponseDto> myMeetings = meetService.getJoinMeetings(GIVEN_MEMBER_ID);
-
-                assertThat(myMeetings.size()).isEqualTo(1);
-                assertThat(myMeetings).extracting("title").containsExactlyInAnyOrder(GIVEN_TITLE);
-                assertThat(myMeetings).extracting("meetId").containsExactlyInAnyOrder(GIVEN_MEET_ID);
             }
         }
     }

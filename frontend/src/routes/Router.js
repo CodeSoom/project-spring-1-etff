@@ -8,8 +8,6 @@ import Foot from "../components/Foot";
 import MeetCreate from "../components/meet/MeetCreate";
 import MeetDetail from "../components/meet/MeetDetail";
 import Navigation from "../components/Navigation/Navigation";
-import MyStudy from "../components/mypage/MyStudy";
-import StudyApprove from "../components/mypage/StudyApprove";
 
 const MyRouter = () => {
   return (
@@ -23,14 +21,7 @@ const MyRouter = () => {
                 <Route path="/login" exact component={Login}/>
                 <Route path="/join" exact component={Join}/>
                 <Route path="/meet/:id" exact component={MeetDetail}/>
-                <Route path="/mystudy" exact component={MyStudy}/>
                 <Route path="/meet-create" exact component={MeetCreate}/>
-                <Route
-                    path="/mystudy/approve/:id"
-                    exact
-                    component={StudyApprove}
-                />
-
                 <Redirect from="*" to="/"/>
               </Switch>
             </Content>

@@ -2,9 +2,6 @@ import {
   CLEAR_ERROR_FAILURE,
   CLEAR_ERROR_REQUEST,
   CLEAR_ERROR_SUCCESS,
-  MEET_APPROVE_FAILURE,
-  MEET_APPROVE_REQUEST,
-  MEET_APPROVE_SUCCESS,
   MEET_DETAIL_LOADING_FAILURE,
   MEET_DETAIL_LOADING_REQUEST,
   MEET_DETAIL_LOADING_SUCCESS,
@@ -14,15 +11,11 @@ import {
   MEET_LOADING_FAILURE,
   MEET_LOADING_REQUEST,
   MEET_LOADING_SUCCESS,
-  MEET_MINE_LOADING_FAILURE,
-  MEET_MINE_LOADING_REQUEST,
-  MEET_MINE_LOADING_SUCCESS,
 } from "../types";
 
 const initialState = {
   isAuthenticated: null,
   meets: [],
-  studies: [],
   meetDetail: null,
   meetCount: "",
   loading: false,
@@ -94,44 +87,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: action.payload,
-        loading: false,
-      };
-
-    case MEET_MINE_LOADING_REQUEST:
-      return {
-        ...state,
-        studies: [],
-        loading: true,
-      };
-    case MEET_MINE_LOADING_SUCCESS:
-      return {
-        ...state,
-        studies: [...state.studies, ...action.payload],
-        loading: false,
-      };
-
-    case MEET_MINE_LOADING_FAILURE:
-      return {
-        ...state,
-        loading: false,
-      };
-
-    case MEET_APPROVE_REQUEST:
-      return {
-        ...state,
-        studies: [],
-        loading: true,
-      };
-    case MEET_APPROVE_SUCCESS:
-      return {
-        ...state,
-        studies: [...state.studies, ...action.payload.studies],
-        loading: false,
-      };
-
-    case MEET_APPROVE_FAILURE:
-      return {
-        ...state,
         loading: false,
       };
 

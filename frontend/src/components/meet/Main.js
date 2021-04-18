@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {Helmet} from "react-helmet";
 import "antd/dist/antd.css";
 import {useDispatch, useSelector} from "react-redux";
-import {MEET_LOADING_REQUEST, MEMBER_LOADING_REQUEST,} from "../../redux/types";
+import {MEET_LOADING_REQUEST} from "../../redux/types";
 import {GrowingSpinner} from "../spinner/Spinner";
 import MeetCardOne from "../meet/MeetCardOne";
 import {Link} from "react-router-dom";
@@ -19,10 +19,6 @@ const Main = () => {
 
     useEffect(() => {
         dispatch({type: MEET_LOADING_REQUEST});
-        dispatch({
-            type: MEMBER_LOADING_REQUEST,
-            payload: localStorage.getItem("token"),
-        });
     }, [dispatch]);
 
     return (
